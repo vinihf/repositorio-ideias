@@ -1,6 +1,6 @@
 <?php
 
-include_once "config.php";
+require_once "config.php";
 
 $sql = "SELECT * FROM disciplinas";
 $disciplinas = $db->query($sql);
@@ -13,9 +13,6 @@ $materiais = $db->query($sql);
 
 $sql = "SELECT * FROM artefatos";
 $artefatos = $db->query($sql);
-
-$sql = "SELECT * FROM organizacao";
-$organizacao = $db->query($sql)
 
 ?>
 
@@ -65,9 +62,9 @@ $organizacao = $db->query($sql)
         <br></br>
 
         <p>Em grupo:</p>
-        <input type="radio" id="sim" name="organizacao" value="true">
+        <input type="radio" id="sim" name="organizacao" value=1>
         <label for="sim">Sim</label>
-        <input type="radio" id="nao" name="organizacao" value="false">
+        <input type="radio" id="nao" name="organizacao" value=0>
         <label for="nao">Não</label>
 
         <p>Materiais necessários:</p>

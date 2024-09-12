@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29/08/2024 às 14:41
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 12/09/2024 às 14:08
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `repositorio_ideias`
 --
-CREATE DATABASE IF NOT EXISTS `repositorio_ideias` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `repositorio_ideias`;
 
 -- --------------------------------------------------------
 
@@ -34,6 +32,16 @@ CREATE TABLE `artefatos` (
   `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `artefatos`
+--
+
+INSERT INTO `artefatos` (`id_artefato`, `descricao`) VALUES
+(1, 'Software funcional'),
+(2, 'Revisão sistemática'),
+(3, 'Artigo científico'),
+(4, 'Prótotipo');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +52,16 @@ CREATE TABLE `disciplinas` (
   `id_disciplina` int(11) NOT NULL,
   `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `disciplinas`
+--
+
+INSERT INTO `disciplinas` (`id_disciplina`, `descricao`) VALUES
+(1, 'Programação'),
+(2, 'Fundamentos da computação'),
+(3, 'Banco de dados'),
+(4, 'Redes de computadores');
 
 -- --------------------------------------------------------
 
@@ -56,16 +74,15 @@ CREATE TABLE `materiais` (
   `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Estrutura para tabela `organizacao`
+-- Despejando dados para a tabela `materiais`
 --
 
-CREATE TABLE `organizacao` (
-  `id_organizacao` int(11) NOT NULL,
-  `em_grupo` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `materiais` (`id_material`, `descricao`) VALUES
+(1, 'Caderno de campo'),
+(2, 'Computador'),
+(3, 'Internet'),
+(4, 'Impressora');
 
 -- --------------------------------------------------------
 
@@ -80,8 +97,8 @@ CREATE TABLE `projetos` (
   `questao_motriz` text NOT NULL,
   `metodologia` text NOT NULL,
   `avaliacao` text NOT NULL,
-  `referencias` int(11) NOT NULL,
-  `id_organizacao` int(11) NOT NULL
+  `referencias` text NOT NULL,
+  `organizacao` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -185,17 +202,11 @@ ALTER TABLE `materiais`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Índices de tabela `organizacao`
---
-ALTER TABLE `organizacao`
-  ADD PRIMARY KEY (`id_organizacao`);
-
---
 -- Índices de tabela `projetos`
 --
 ALTER TABLE `projetos`
   ADD PRIMARY KEY (`id_projeto`),
-  ADD KEY `id_organizacao` (`id_organizacao`);
+  ADD KEY `id_organizacao` (`organizacao`);
 
 --
 -- Índices de tabela `projetos_artefatos`
@@ -239,25 +250,19 @@ ALTER TABLE `temas`
 -- AUTO_INCREMENT de tabela `artefatos`
 --
 ALTER TABLE `artefatos`
-  MODIFY `id_artefato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_artefato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `disciplinas`
 --
 ALTER TABLE `disciplinas`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `materiais`
 --
 ALTER TABLE `materiais`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `organizacao`
---
-ALTER TABLE `organizacao`
-  MODIFY `id_organizacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `projetos`
@@ -268,12 +273,6 @@ ALTER TABLE `projetos`
 --
 -- Restrições para tabelas despejadas
 --
-
---
--- Restrições para tabelas `projetos`
---
-ALTER TABLE `projetos`
-  ADD CONSTRAINT `projetos_ibfk_1` FOREIGN KEY (`id_organizacao`) REFERENCES `organizacao` (`id_organizacao`);
 
 --
 -- Restrições para tabelas `projetos_artefatos`
