@@ -26,7 +26,7 @@ $artefatos = $db->query($sql);
 <body>
     <h1>Vamos criar sua idéia de ABP?</h1>
 
-    <form action="cria.php" method="post">
+    <form action="addProjeto.php" method="post">
 
         <label for="titulo">Título do projeto:</label>
         <input type=text id="titulo" required name="titulo" >
@@ -39,8 +39,8 @@ $artefatos = $db->query($sql);
         <p>Disciplina:</p>
         <?php
             while($row = $disciplinas->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_disciplina']." name='disciplina[]' value=".$row['id_disciplina'].">";
-                echo "<label for=".$row['id_disciplina'].">".$row['descricao']."</label>";
+                echo "<input type='checkbox' id=d_".$row['id_disciplina']." name='disciplina[]' value=".$row['id_disciplina'].">";
+                echo "<label for=d_".$row['id_disciplina'].">".$row['descricao']."</label>";
             }
         ?>
 
@@ -49,8 +49,8 @@ $artefatos = $db->query($sql);
         <p>Tema:</p>
         <?php
             while($row = $temas->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_tema']." name='tema[]' value=".$row['id_tema'].">";
-                echo "<label for=".$row['id_tema'].">".$row['id_tema']." ".$row['descricao']."</label>";
+                echo "<input type='checkbox' id=t_".$row['id_tema']." name='tema[]' value=".$row['id_tema'].">";
+                echo "<label for=t_".$row['id_tema'].">".$row['id_tema']." ".$row['descricao']."</label>";
             }
         ?>
         
@@ -70,16 +70,16 @@ $artefatos = $db->query($sql);
         <p>Materiais necessários:</p>
         <?php
             while($row = $materiais->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_material']." name='material[]' value=".$row['id_material'].">";
-                echo "<label for=".$row['id_material'].">".$row['descricao']."</label>";
+                echo "<input type='checkbox' id=m_".$row['id_material']." name='material[]' value=".$row['id_material'].">";
+                echo "<label for=m_".$row['id_material'].">".$row['descricao']."</label>";
             }
         ?>
 
         <p>Artefatos previstos:</p>
         <?php
             while($row = $artefatos->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_artefato']." name='artefato[]' value=".$row['id_artefato'].">";
-                echo "<label for=".$row['id_artefato'].">".$row['descricao']."</label>";
+                echo "<input type='checkbox' id=a_".$row['id_artefato']." name='artefato[]' value=".$row['id_artefato'].">";
+                echo "<label for=a_".$row['id_artefato'].">".$row['descricao']."</label>";
             }
         ?>
 
@@ -94,20 +94,8 @@ $artefatos = $db->query($sql);
 
         <br>
 
-        <button type="submit" name="submit" id="submit" value="submit">Publicar ideia</button>
+        <button name="botao" id="submit" value="publicar">Publicar ideia</button>
     </form>
 
-    <br></br>
-
-    <p>
-        <?php
-            if(isset($_POST['submit'])){
-                print_r($_POST['titulo']);
-                print_r($_POST['q_motriz']);
-                print_r($_POST['disciplina']);
-                print_r($_POST['tema']);
-            }
-        ?>
-    </p>
 </body>
 </html>
