@@ -1,6 +1,6 @@
 <?php
 
-require_once "config.php";
+require_once("config.php");
 
 $sql = "SELECT * FROM disciplinas";
 $disciplinas = $db->query($sql);
@@ -36,23 +36,23 @@ $artefatos = $db->query($sql);
 
         <br></br>
 
-        <label for=disciplina>Disciplina:</label>
-        <select name="disciplina">
-            <?php
-                 while($row = $disciplinas->fetch_assoc()) {
-                    echo "<option value=" . $row['id_disciplina'] . ">" . $row['descricao'] . "</option>";
-                }
-            ?>
-        </select>
+        <p>Disciplina:</p>
+        <?php
+            while($row = $disciplinas->fetch_assoc()){
+                echo "<input type='checkbox' id=".$row['id_disciplina']." name='disciplina[]' value=".$row['id_disciplina'].">";
+                echo "<label for=".$row['id_disciplina'].">".$row['descricao']."</label>";
+            }
+        ?>
 
-        <label for="tema">Tema:</label>
-        <select name="tema">
-            <?php
-                while($row = $temas->fetch_assoc()) {
-                    echo "<option value=" . $row['id_tema'] . ">" . $row['id_tema'] . "  " . $row['descricao'] . "</option>";
-                }
-            ?>
-        </select>
+        <br></br>
+
+        <p>Tema:</p>
+        <?php
+            while($row = $temas->fetch_assoc()){
+                echo "<input type='checkbox' id=".$row['id_tema']." name='tema[]' value=".$row['id_tema'].">";
+                echo "<label for=".$row['id_tema'].">".$row['id_tema']." ".$row['descricao']."</label>";
+            }
+        ?>
         
         <br></br>
 
@@ -62,15 +62,15 @@ $artefatos = $db->query($sql);
         <br></br>
 
         <p>Em grupo:</p>
-        <input type="radio" id="sim" name="organizacao" value=1>
+        <input type="radio" id="sim" name="em_grupo" value=1>
         <label for="sim">Sim</label>
-        <input type="radio" id="nao" name="organizacao" value=0>
+        <input type="radio" id="nao" name="em_grupo" value=0>
         <label for="nao">Não</label>
 
         <p>Materiais necessários:</p>
         <?php
             while($row = $materiais->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_material']." name=".$row['descricao']." value=".$row['descricao'].">";
+                echo "<input type='checkbox' id=".$row['id_material']." name='material[]' value=".$row['id_material'].">";
                 echo "<label for=".$row['id_material'].">".$row['descricao']."</label>";
             }
         ?>
@@ -78,7 +78,7 @@ $artefatos = $db->query($sql);
         <p>Artefatos previstos:</p>
         <?php
             while($row = $artefatos->fetch_assoc()){
-                echo "<input type='checkbox' id=".$row['id_artefato']." name=".$row['descricao']." value=".$row['descricao'].">";
+                echo "<input type='checkbox' id=".$row['id_artefato']." name='artefato[]' value=".$row['id_artefato'].">";
                 echo "<label for=".$row['id_artefato'].">".$row['descricao']."</label>";
             }
         ?>
@@ -86,15 +86,15 @@ $artefatos = $db->query($sql);
         <p>Metodologia:</p>
             <textarea name="metodologia" id="metodologia" cols="50" rows="10"></textarea>
 
-        <p>Organização:</p>
-            <textarea name="organizacao" id="organizacao" cols="50" rows="6"></textarea>
+        <p>Avaliacão:</p>
+            <textarea name="avaliacao" id="avaliacao" cols="50" rows="6"></textarea>
 
         <p>Referências:</p>
-            <textarea name="metodologia" id="metodologia" cols="50" rows="9"></textarea>
+            <textarea name="referencias" id="referencias" cols="50" rows="9"></textarea>
 
         <br>
 
-        <button type="submit" name="submit" id="submit">Publicar ideia</button>
+        <button type="submit" name="submit" id="submit" value="submit">Publicar ideia</button>
     </form>
 
     <br></br>
