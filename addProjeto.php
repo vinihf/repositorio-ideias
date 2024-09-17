@@ -21,6 +21,26 @@
 
         var_dump($tema);
         
+        $sql = "SELECT id_projeto FROM projetos ORDER BY 1"
+        $result = $db->query($sql);
+
+        if ($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            $maxId = $row['maxId'];
+
+            $sql = mysqli_query($db, "INSERT INTO projetos_disciplinas (id_projeto, id_disciplina)
+            VALUES ($maxId, $disciplina)");
+
+            $sql = mysqli_query($db, "INSERT INTO projetos_temas (id_projeto, id_tema)
+            VALUES ($maxId, $tema)");
+
+            $sql = mysqli_query($db, "INSERT INTO projetos_materiais (id_projeto, id_material)
+            VALUES ($maxId, $material)");
+
+            $sql = mysqli_query($db, "INSERT INTO projetos_artefatos (id_projeto, id_artefato)
+            VALUES ($maxId, $artefato)");
+        }
+
         die;
 
 
