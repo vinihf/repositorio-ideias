@@ -21,24 +21,50 @@
 
         var_dump($tema);
         
-        $sql = "SELECT id_projeto FROM projetos ORDER BY 1"
+        $sql = "SELECT id_projeto FROM projetos ORDER BY id_projeto DESC LIMIT 1";
         $result = $db->query($sql);
 
         if ($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            $maxId = $row['maxId'];
+            $maxId = $row['id_projeto'];
 
-            $sql = mysqli_query($db, "INSERT INTO projetos_disciplinas (id_projeto, id_disciplina)
-            VALUES ($maxId, $disciplina)");
+            for ($i = 0; $i < sizeof($disciplina); $i++){
+                $disciplina[$i] = intval($disciplina[$i]);
+            }
 
-            $sql = mysqli_query($db, "INSERT INTO projetos_temas (id_projeto, id_tema)
-            VALUES ($maxId, $tema)");
+            for ($i = 0; $i < sizeof($tema); $i++){
+                $tema[$i] = intval($tema[$i]);
+            }
 
-            $sql = mysqli_query($db, "INSERT INTO projetos_materiais (id_projeto, id_material)
-            VALUES ($maxId, $material)");
+            for ($i = 0; $i < sizeof($material); $i++){
+                $material[$i] = intval($material[$i]);
+            }    
 
-            $sql = mysqli_query($db, "INSERT INTO projetos_artefatos (id_projeto, id_artefato)
-            VALUES ($maxId, $artefato)");
+            for ($i = 0; $i < sizeof($artefato); $i++){
+                $artefato[$i] = intval($artefato[$i]);
+            }
+
+
+            for ($i = 0; $i < sizeof($disciplina); $i++){
+                $sql = mysqli_query($db, "INSERT INTO projetos_disciplinas (id_projeto, id_disciplina)
+                VALUES ($maxId, $disciplina[$i])");
+            }
+
+            for ($i = 0; $i < sizeof($tema); $i++){
+                $sql = mysqli_query($db, "INSERT INTO projetos_temas (id_projeto, id_tema)
+                VALUES ($maxId, $tema[$i])");
+            }
+
+            for ($i = 0; $i < sizeof($material); $i++){
+                $sql = mysqli_query($db, "INSERT INTO projetos_materiais (id_projeto, id_material)
+                VALUES ($maxId, $material[$i])"); 
+            }       
+
+            for ($i = 0; $i < sizeof($artefato); $i++){
+                $sql = mysqli_query($db, "INSERT INTO projetos_artefatos (id_projeto, id_artefato)
+                VALUES ($maxId, $artefato[$i])");
+            }
+
         }
 
         die;
