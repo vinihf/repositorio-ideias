@@ -14,7 +14,7 @@
     <br></br>
 
     <form action="buscaProjeto.php" method="post">
-        <input type="text" placeholder="Digite o título a pesquisar...">
+        <input type="text" name="titulo" placeholder="Digite o título a pesquisar...">
         <button name="botaoBuscar" id="buscar" value="submit">Buscar</button>
     </form>
 

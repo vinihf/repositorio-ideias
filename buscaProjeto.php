@@ -1,15 +1,19 @@
 <?php
     require_once("config.php");
 
-    if(isset($_POST("botaoBuscar"))) {
-        $entrada_busca = $db->real_scape_string($_POST['botaoBuscar']);
-        $sql = "SELECT projetos.titulo, temas.tema, disciplinas.disciplina
+    if(isset($_POST['botaoBuscar'])) {
+        $entrada_busca = $_POST['titulo'];
+        $sql = "SELECT projetos.titulo, temas.descricao, disciplinas.descricao
                 FROM projetos
                 JOIN projetos_temas ON projetos.id_projeto = projetos_temas.id_projeto
                 JOIN temas ON projetos_temas.id_tema = temas.id_tema
                 JOIN projetos_disciplinas ON projetos.id_projeto = projetos_disciplinas.id_projeto
-                JOIN disciplinas ON projetos_disciplinas.id_disciplina = disciplinas.id_disciplinas
-                WHERE projetos.titulo LIKE '%$entrada_busca%'";
+                JOIN disciplinas ON projetos_disciplinas.id_disciplina = disciplinas.id_disciplina
+                WHERE projetos.titulo LIKE '%{$entrada_busca}%'";
+
+        echo $sql;
+
+        die;
 
         $result = $db->query($sql);
 
