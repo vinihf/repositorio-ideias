@@ -15,7 +15,7 @@
 
         echo $sql;
 
-        //die;
+        die;
 
         $result = $db->query($sql);
 

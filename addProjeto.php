@@ -19,7 +19,6 @@
         $sql = mysqli_query($db, "INSERT INTO projetos (id_projeto, titulo, ancora, questao_motriz, organizacao, metodologia, avaliacao, referencias)
         VALUES ('', '$titulo', '$ancora', '$q_motriz', $em_grupo, '$metodologia', '$avaliacao', '$referencias')");
 
-        var_dump($tema);
         
         $sql = "SELECT id_projeto FROM projetos ORDER BY id_projeto DESC LIMIT 1";
         $result = $db->query($sql);
@@ -67,10 +66,7 @@
 
         }
 
-        die;
-
-
-
+        header("location: index.html");
     }
 
 
