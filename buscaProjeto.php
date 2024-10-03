@@ -11,29 +11,43 @@
 
     if(isset($_POST['botaoBuscar'])) {
         $entrada_busca = $_POST['titulo'];
-        $sql = "FROM projetos p SELECT p.id_projeto, p.titulo, p.ancora, p.questao_motriz,
-        p.metodologia, p.avaliacao, p.referencias, p.organizacao,
-        
-        GROUP_CONCAT(DISTINCT a.descricao) AS artefatos,
-        GROUP_CONCAT(DISTINCT d.descricao) AS disciplinas,
-        GROUP_CONCAT(DISTINCT m.descricao) AS materiais,
-        GROUP_CONCAT(DISTINCT t.descricao) AS temas
+        $sql = "SELECT 
+                    p.id_projeto, 
+                        p.titulo, 
+                        p.ancora, 
+                        p.questao_motriz, 
+                        p.metodologia, 
+                        p.avaliacao, 
+                        p.referencias, 
+                        p.organizacao, 
+                        GROUP_CONCAT(DISTINCT a.descricao SEPARATOR ', ') AS artefatos, 
+                        GROUP_CONCAT(DISTINCT d.descricao SEPARATOR ', ') AS disciplinas, 
+                        GROUP_CONCAT(DISTINCT m.descricao SEPARATOR ', ') AS materiais, 
+                        GROUP_CONCAT(DISTINCT t.descricao SEPARATOR ', ') AS temas
+                    FROM 
+                        projetos p
+                    LEFT JOIN 
+                        projetos_artefatos pa ON p.id_projeto = pa.id_projeto
+                    LEFT JOIN 
+                        artefatos a ON pa.id_artefato = a.id_artefato
+                    LEFT JOIN 
+                        projetos_disciplinas pd ON p.id_projeto = pd.id_projeto
+                    LEFT JOIN 
+                        disciplinas d ON pd.id_disciplina = d.id_disciplina
+                    LEFT JOIN 
+                        projetos_materiais pm ON p.id_projeto = pm.id_projeto
+                    LEFT JOIN 
+                        materiais m ON pm.id_material = m.id_material
+                    LEFT JOIN 
+                        projetos_temas pt ON p.id_projeto = pt.id_projeto
+                    LEFT JOIN 
+                        temas t ON pt.id_tema = t.id_tema
+                    WHERE 
+                        p.titulo LIKE '%Titulo%'
+                    GROUP BY 
+                        p.id_projeto";
 
-        LEFT JOIN projetos_artefatos pa ON p.id_projeto = pa.id_projeto
-        LEFT JOIN artefatos a ON pa.id_artefato = a.id_artefato
-        LEFT JOIN projetos_disciplinas pd ON p.id_projeto = pd.id_projeto
-        LEFT JOIN disciplinas d ON pd.id_disciplina = d.id_disciplina
-        LEFT JOIN projetos_materiais pm ON p.id_projeto = pm.id_projeto
-        LEFT JOIN materiais m ON pm.id_material = m.id_material
-        LEFT JOIN projetos_temas pt ON p.id_projeto = pt.id_projeto
-        LEFT JOIN temas t ON pt.id_tema = t.id_tema
-        WHERE p.titulo LIKE %{$entrada_busca}%
-        GROUP BY p.id_projeto";
 
-
-        echo $sql;
-
-        die;
 
         $result = $db->query($sql);
 
