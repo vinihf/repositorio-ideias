@@ -28,7 +28,7 @@
         LEFT JOIN projetos_temas pt ON p.id_projeto = pt.id_projeto
         LEFT JOIN temas t ON pt.id_tema = t.id_tema
         WHERE p.titulo LIKE %{$entrada_busca}%
-        GROUP BY p.id_projeto;
+        GROUP BY p.id_projeto";
 
 
         echo $sql;
