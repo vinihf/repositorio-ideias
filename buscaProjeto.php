@@ -11,7 +11,7 @@
 
     if(isset($_POST['botaoBuscar'])) {
         $entrada_busca = $_POST['titulo'];
-        $sql = FROM projetos p SELECT p.id_projeto, p.titulo, p.ancora, p.questao_motriz,
+        $sql = "FROM projetos p SELECT p.id_projeto, p.titulo, p.ancora, p.questao_motriz,
         p.metodologia, p.avaliacao, p.referencias, p.organizacao,
         
         GROUP_CONCAT(DISTINCT a.descricao) AS artefatos,
