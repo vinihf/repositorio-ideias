@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/09/2024 às 14:08
+-- Tempo de geração: 09/10/2024 às 15:29
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `repositorio_ideias`
 --
+CREATE DATABASE IF NOT EXISTS `repositorio_ideias` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `repositorio_ideias`;
 
 -- --------------------------------------------------------
 
@@ -153,31 +155,32 @@ CREATE TABLE `projetos_temas` (
 
 CREATE TABLE `temas` (
   `id_tema` int(11) NOT NULL,
-  `descricao` varchar(200) NOT NULL
+  `descricao` varchar(200) NOT NULL,
+  `img` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `temas`
 --
 
-INSERT INTO `temas` (`id_tema`, `descricao`) VALUES
-(1, 'Erradicação da pobreza'),
-(2, 'Erradicação da fome'),
-(3, 'Saúde e Bem-Estar'),
-(4, 'Educação de qualidade'),
-(5, 'Igualdade de gênero'),
-(6, 'Água Potável e Saneamento'),
-(7, 'Energia acessível e limpa'),
-(8, 'Trabalho decente e crescimento econômico'),
-(9, 'Inovação e infraestrutura'),
-(10, 'Redução das desigualdades'),
-(11, 'Cidades e comunidades sustentáveis'),
-(12, 'Consumo e produção responsáveis'),
-(13, 'Ação contra a Mudança Global do Clima'),
-(14, 'Vida na Água'),
-(15, 'Vida Terrestre'),
-(16, 'Paz, Justiça e Instituições Eficazes'),
-(17, 'Parcerias e Meios de Implementação');
+INSERT INTO `temas` (`id_tema`, `descricao`, `img`) VALUES
+(1, 'Erradicação da pobreza', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-1.svg'),
+(2, 'Erradicação da fome', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-2.svg'),
+(3, 'Saúde e Bem-Estar', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-3.svg'),
+(4, 'Educação de qualidade', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-4.svg'),
+(5, 'Igualdade de gênero', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-5.svg'),
+(6, 'Água Potável e Saneamento', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-6.svg'),
+(7, 'Energia acessível e limpa', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-7.svg'),
+(8, 'Trabalho decente e crescimento econômico', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-8.svg'),
+(9, 'Inovação e infraestrutura', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-9.svg'),
+(10, 'Redução das desigualdades', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-10.svg'),
+(11, 'Cidades e comunidades sustentáveis', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-11.svg'),
+(12, 'Consumo e produção responsáveis', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-12.svg'),
+(13, 'Ação contra a Mudança Global do Clima', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-13.svg'),
+(14, 'Vida na Água', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-14.svg'),
+(15, 'Vida Terrestre', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-15.svg'),
+(16, 'Paz, Justiça e Instituições Eficazes', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-16.svg'),
+(17, 'Parcerias e Meios de Implementação', 'https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-17.svg');
 
 --
 -- Índices para tabelas despejadas
