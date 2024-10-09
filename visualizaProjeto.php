@@ -58,7 +58,7 @@ if (isset($_GET['id'])){
                 <?php
 
                 echo "<h1>".$row['titulo']."</h1>";
-                if ($row['organizacao']===TRUE){
+                if ($row['organizacao']==1){
                     echo "<h3>Em grupo</h3>";
                 }
                 else {
