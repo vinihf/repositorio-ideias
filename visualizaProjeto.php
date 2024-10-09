@@ -58,8 +58,22 @@ if (isset($_GET['id'])){
                 <?php
 
                 echo "<h1>".$row['titulo']."</h1>";
+                if ($row['organizacao']===TRUE){
+                    echo "<h3>Em grupo</h3>";
+                }
+                else {
+                    echo "<h3>Individual</h3>";
+                }
                 echo "<h3>Questão motriz:</h3><p>".$row['questao_motriz']."</p>";
                 echo "<h3>Âncora:</h3><p>".$row['ancora']."</p>";
+                echo "<h3>Disciplinas:</h3><p>".$row['disciplinas']."</p>";
+                echo "<h3>Temas:</h3><p>".$row['temas']."</p>";
+                echo "<h3>Metodologia:</h3><p>".$row['metodologia']."</p>";
+                echo "<h3>Avaliação:</h3><p>".$row['avaliacao']."</p>";
+                echo "<h3>Materiais:</h3><p>".$row['materiais']."</p>";
+                echo "<h3>Artefatos:</h3><p>".$row['artefatos']."</p>";
+                echo "<h3>Referências:</h3><p>".$row['referencias']."</p>";
+
             }
         }
     
