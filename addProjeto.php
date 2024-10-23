@@ -16,6 +16,7 @@
         $avaliacao = $_POST['avaliacao'];
         $referencias = $_POST['referencias'];
 
+
         $sql = mysqli_query($db, "INSERT INTO projetos (id_projeto, titulo, ancora, questao_motriz, organizacao, metodologia, avaliacao, referencias)
         VALUES ('', '$titulo', '$ancora', '$q_motriz', $em_grupo, '$metodologia', '$avaliacao', '$referencias')");
 
