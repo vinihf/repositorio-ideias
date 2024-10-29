@@ -8,6 +8,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
+
 <?php
 
 require_once("config.php");
@@ -29,7 +30,7 @@ if (isset($_GET['id'])){
                     GROUP_CONCAT(DISTINCT a.descricao SEPARATOR ', ') AS artefatos, 
                     GROUP_CONCAT(DISTINCT d.descricao SEPARATOR ', ') AS disciplinas, 
                     GROUP_CONCAT(DISTINCT m.descricao SEPARATOR ', ') AS materiais, 
-                    GROUP_CONCAT(DISTINCT t.descricao SEPARATOR ', ') AS temas
+                    GROUP_CONCAT(DISTINCT t.img ' ') AS temas
                 FROM 
                     projetos p
                 LEFT JOIN 
@@ -59,17 +60,17 @@ if (isset($_GET['id'])){
             <body>
                 <?php
 
-                $titulo = "<h1>".$row['titulo']."</h1>";
+                $titulo = "<h1 class='text-primary' style='font-weight: bold'>".$row['titulo']."</h1>";
                 if ($row['organizacao']==1){
-                    $em_grupo = "<h4>Em grupo</h4>";
+                    $em_grupo = "<h4 style='font-weight: 400'>Em grupo</h4>";
                 }
                 else {
                     $em_grupo = "<h4>Individual</h4>";
                 }
-                $questao_motriz = "<h3>Questão motriz:</h3><p>".$row['questao_motriz']."</p>";
-                $ancora = "<h3>Âncora:</h3><p>".$row['ancora']."</p>";
+                $questao_motriz = "<h4>Questão motriz:</h4><p>".$row['questao_motriz']."</p>";
+                $ancora = "<h4>Âncora:</h4><p>".$row['ancora']."</p>";
                 $disciplinas = "<h3>Disciplinas:</h3><p>".$row['disciplinas']."</p>";
-                $temas = "<h3>Temas:</h3><p>".$row['temas']."</p>";
+                $temas = "<h3>Temas:</h3><img src=".$row['temas']." alt='temas'>";
                 $metodologia = "<h3>Metodologia:</h3><p>".$row['metodologia']."</p>";
                 $avaliacao = "<h3>Avaliação:</h3><p>".$row['avaliacao']."</p>";
                 $materiais = "<h3>Materiais:</h3><p>".$row['materiais']."</p>";
@@ -86,20 +87,21 @@ if (isset($_GET['id'])){
                 <div class="row">
                     <div class="col d-flex justify-content-center"><?php echo $titulo ?></div><!--col-titulo--> 
                 </div><!--row-titulo-->
-                <br>
                 <div class="row justify-content-center">
-                    <div class="col-4 justify-content-right"></div>
-                    <div class="col-4 justify-content-center"><?php echo $em_grupo ?></div>
+                    <div class="col-4 d-flex justify-content-right"></div>
+                    <div class="col-4 d-flex justify-content-center"><?php echo $em_grupo ?></div>
                 </div>
-                <br>
+                <br></br>
                 <div class="row">
-                    <div class="col justify-content-center"></div>
-                    <div class="col justify-content-center"></div>
+                    <div class="col-3"></div>
+                    <div class="col"><?php echo $questao_motriz ?></div>
+                    <div class="col"><?php echo $ancora ?></div>
+                    <div class="col-2"></div>
                 </div>   
                 <br>
                 <div class="row">
-                    <div class="col justify-content-center"></div>
-                    <div class="col justify-content-center"></div>
+                    <div class="col justify-content-center"><?php echo $disciplinas ?></div>
+                    <div class="col justify-content-center"><?php echo $temas ?></div>
                 </div>
                 <br>
                 <div class="row">
