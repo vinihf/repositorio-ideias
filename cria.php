@@ -62,7 +62,7 @@ $artefatos = $db->query($sql);
                 <input type=text id="titulo" required name="titulo" >
 
                 <label for="q_motriz">Questão motriz:</label>
-                <input type="text" id="q_motriz" required name="q_motriz">
+                <textarea  id="q_motriz" required name="q_motriz"></textarea>
         </div> <!--row -->
 
                 <br></br>
