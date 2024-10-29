@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualização</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
 <?php
@@ -57,26 +59,61 @@ if (isset($_GET['id'])){
             <body>
                 <?php
 
-                echo "<h1>".$row['titulo']."</h1>";
+                $titulo = "<h1>".$row['titulo']."</h1>";
                 if ($row['organizacao']==1){
-                    echo "<h3>Em grupo</h3>";
+                    $em_grupo = "<h4>Em grupo</h4>";
                 }
                 else {
-                    echo "<h3>Individual</h3>";
+                    $em_grupo = "<h4>Individual</h4>";
                 }
-                echo "<h3>Questão motriz:</h3><p>".$row['questao_motriz']."</p>";
-                echo "<h3>Âncora:</h3><p>".$row['ancora']."</p>";
-                echo "<h3>Disciplinas:</h3><p>".$row['disciplinas']."</p>";
-                echo "<h3>Temas:</h3><p>".$row['temas']."</p>";
-                echo "<h3>Metodologia:</h3><p>".$row['metodologia']."</p>";
-                echo "<h3>Avaliação:</h3><p>".$row['avaliacao']."</p>";
-                echo "<h3>Materiais:</h3><p>".$row['materiais']."</p>";
-                echo "<h3>Artefatos:</h3><p>".$row['artefatos']."</p>";
-                echo "<h3>Referências:</h3><p>".$row['referencias']."</p>";
+                $questao_motriz = "<h3>Questão motriz:</h3><p>".$row['questao_motriz']."</p>";
+                $ancora = "<h3>Âncora:</h3><p>".$row['ancora']."</p>";
+                $disciplinas = "<h3>Disciplinas:</h3><p>".$row['disciplinas']."</p>";
+                $temas = "<h3>Temas:</h3><p>".$row['temas']."</p>";
+                $metodologia = "<h3>Metodologia:</h3><p>".$row['metodologia']."</p>";
+                $avaliacao = "<h3>Avaliação:</h3><p>".$row['avaliacao']."</p>";
+                $materiais = "<h3>Materiais:</h3><p>".$row['materiais']."</p>";
+                $artefatos = "<h3>Artefatos:</h3><p>".$row['artefatos']."</p>";
+                $referencias = "<h3>Referências:</h3><p>".$row['referencias']."</p>";
 
             }
         }
     
     }
                 ?>
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <div class="col d-flex justify-content-center"><?php echo $titulo ?></div><!--col-titulo--> 
+                </div><!--row-titulo-->
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-4 justify-content-right"></div>
+                    <div class="col-4 justify-content-center"><?php echo $em_grupo ?></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col justify-content-center"></div>
+                    <div class="col justify-content-center"></div>
+                </div>   
+                <br>
+                <div class="row">
+                    <div class="col justify-content-center"></div>
+                    <div class="col justify-content-center"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col justify-content-center"></div>
+                    <div class="col justify-content-center"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col justify-content-center"></div>
+                    <div class="col justify-content-center"></div>
+                </div>
+                <div class="row">
+                    <div class="col justify"></div>
+                </div>
+            </div>
+
             </body>

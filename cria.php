@@ -30,19 +30,19 @@ $artefatos = $db->query($sql);
             position: relative;
         }
 
+        .checkbox-container img {
+            width: 200px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
         .checkbox-container input[type="checkbox"] {
             position: absolute;
             opacity: 0;
             cursor: pointer;
             width: 100%;
             height: 100%;
-        }
-
-        .checkbox-container img {
-            width: 200px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.3s ease;
         }
 
         .checkbox-container input[type="checkbox"]:checked + img {
@@ -66,7 +66,7 @@ $artefatos = $db->query($sql);
         </div> <!--row -->
 
                 <br></br>
-            
+
                 <p>Disciplina:</p>
                 <?php
                     while($row = $disciplinas->fetch_assoc()){

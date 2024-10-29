@@ -55,7 +55,7 @@
         if ($result->num_rows > 0){
             $saida = "<ul>";
             while ($row = $result->fetch_assoc()){
-                $saida .= "<li><a href='visualizaProjeto.php?id=".$row['id_projeto']."'>" .$row['titulo']. " - ".$row['temas']. "<br>" . $row['disciplinas']. "</a></li>";      
+                $saida .= "<li><a class='btn btn-light' href='visualizaProjeto.php?id=".$row['id_projeto']."'>" .$row['titulo']. " - ".$row['temas']. "<br>" . $row['disciplinas']. "</a></li>";      
             }
 
             $saida .= "</ul>";
