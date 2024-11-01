@@ -30,7 +30,7 @@ if (isset($_GET['id'])){
                     GROUP_CONCAT(DISTINCT a.descricao SEPARATOR ', ') AS artefatos, 
                     GROUP_CONCAT(DISTINCT d.descricao SEPARATOR ', ') AS disciplinas, 
                     GROUP_CONCAT(DISTINCT m.descricao SEPARATOR ', ') AS materiais, 
-                    GROUP_CONCAT(DISTINCT t.img ' ') AS temas
+                    GROUP_CONCAT(DISTINCT t.img SEPARATOR ' ') AS temas
                 FROM 
                     projetos p
                 LEFT JOIN 
@@ -69,13 +69,13 @@ if (isset($_GET['id'])){
                 }
                 $questao_motriz = "<h4>Questão motriz:</h4><p>".$row['questao_motriz']."</p>";
                 $ancora = "<h4>Âncora:</h4><p>".$row['ancora']."</p>";
-                $disciplinas = "<h3>Disciplinas:</h3><p>".$row['disciplinas']."</p>";
-                $temas = "<h3>Temas:</h3><img src=".$row['temas']." alt='temas'>";
-                $metodologia = "<h3>Metodologia:</h3><p>".$row['metodologia']."</p>";
-                $avaliacao = "<h3>Avaliação:</h3><p>".$row['avaliacao']."</p>";
-                $materiais = "<h3>Materiais:</h3><p>".$row['materiais']."</p>";
-                $artefatos = "<h3>Artefatos:</h3><p>".$row['artefatos']."</p>";
-                $referencias = "<h3>Referências:</h3><p>".$row['referencias']."</p>";
+                $disciplinas = "<h4>Disciplinas:</h4><p>".$row['disciplinas']."</p>";
+                $temas = "<h4>Temas:</h4><img src=".$row['temas']." alt='temas' style='width: 100px; height: 100px'>";
+                $metodologia = "<h4>Metodologia:</h4><p>".$row['metodologia']."</p>";
+                $avaliacao = "<h4>Avaliação:</h4><p>".$row['avaliacao']."</p>";
+                $materiais = "<h4>Materiais:</h4><p>".$row['materiais']."</p>";
+                $artefatos = "<h4>Artefatos:</h4><p>".$row['artefatos']."</p>";
+                $referencias = "<h4>Referências:</h4><p>".$row['referencias']."</p>";
 
             }
         }
@@ -100,21 +100,26 @@ if (isset($_GET['id'])){
                 </div>   
                 <br>
                 <div class="row">
-                    <div class="col justify-content-center"><?php echo $disciplinas ?></div>
-                    <div class="col justify-content-center"><?php echo $temas ?></div>
+                    <div class="col-3"></div>
+                    <div class="col"><?php echo $disciplinas ?></div>
+                    <div class="col"><?php echo $temas ?></div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col justify-content-center"></div>
-                    <div class="col justify-content-center"></div>
+                    <div class="col-3"></div>
+                    <div class="col justify-content-center"><?php echo $metodologia ?></div>
+                    <div class="col justify-content-center"><?php echo $avaliacao ?></div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col justify-content-center"></div>
-                    <div class="col justify-content-center"></div>
+                    <div class="col-3"></div>
+                    <div class="col justify-content-center"><?php echo $materiais ?></div>
+                    <div class="col justify-content-center"><?php echo $artefatos ?></div>
                 </div>
                 <div class="row">
-                    <div class="col justify"></div>
+                    <div class="col-5"></div>
+                    <div class="col"><?php echo $referencias ?></div>
+                    <div class="col-5"></div>
                 </div>
             </div>
 
