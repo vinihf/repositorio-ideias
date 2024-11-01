@@ -25,9 +25,8 @@ $artefatos = $db->query($sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
-        .checkbox-container {
+            .checkbox-container {
             display: inline-block;
-            position: relative;
         }
 
         .checkbox-container img {
@@ -38,7 +37,6 @@ $artefatos = $db->query($sql);
         }
 
         .checkbox-container input[type="checkbox"] {
-            position: absolute;
             opacity: 0;
             cursor: pointer;
             width: 100%;
@@ -46,7 +44,9 @@ $artefatos = $db->query($sql);
         }
 
         .checkbox-container input[type="checkbox"]:checked + img {
-            border-color: #007BFF; /* Cor da borda quando selecionada */
+            border-color: #007BFF;
+            border-width: 5px; /* Cor da borda quando selecionada */
+            opacity: 3;
         }
     </style>
 </head>
@@ -78,15 +78,16 @@ $artefatos = $db->query($sql);
                 <br></br>
                 
 
-                <p>Tema:</p>
                 <div class="checkbox-container">
-                    <?php
-                        while($row = $temas->fetch_assoc()){
-                            echo "<input type='checkbox' id=t_".$row['id_tema']." name='tema[]' value=".$row['id_tema']."><img src=".$row['img'].">";
-                        }
-                    ?>
-                </div>
-                <br></br>
+    <?php
+        while ($row = $temas->fetch_assoc()) {
+            echo "<label>"; // Envolvendo input e img para permitir o estilo
+            echo "<input type='checkbox' id='t_".$row['id_tema']."' name='tema[]' value='".$row['id_tema']."'>";
+            echo "<img src='".$row['img']."' alt='Imagem do tema'>";
+            echo "</label>";
+        }
+    ?>
+</div>
 
                 <p>Âncora:</p>
                     <textarea class="form-control" placeholder="Digite a âncora do projeto..." name="ancora" id="ancora" cols="25" rows="5"></textarea>
