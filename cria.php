@@ -70,8 +70,10 @@ $artefatos = $db->query($sql);
                 <p>Disciplina:</p>
                 <?php
                     while($row = $disciplinas->fetch_assoc()){
+                        echo "<div class='form-check form-check-inline'>";
                         echo "<input class='form-check-input' type='checkbox' id=d_".$row['id_disciplina']." name='disciplina[]' value=".$row['id_disciplina'].">";
                         echo "<label class='form-check-label' for=d_".$row['id_disciplina'].">".$row['descricao']."</label>";
+                        echo "</div>";
                     }
                 ?>
 
@@ -88,25 +90,32 @@ $artefatos = $db->query($sql);
         }
     ?>
 </div>
-
+                <br></br>
                 <p>Âncora:</p>
                     <textarea class="form-control" placeholder="Digite a âncora do projeto..." name="ancora" id="ancora" cols="25" rows="5"></textarea>
 
                 <br></br>
 
                 <p>Em grupo:</p>
-                <input class='form-check-input' type="radio" id="sim" name="em_grupo" value=1>
-                <label class='form-check-label' for="sim">Sim</label>
-                <input class='form-check-input' type="radio" id="nao" name="em_grupo" value=0>
-                <label class='form-check-label' for="nao">Não</label>
+                <div class="form-check form-check-inline">
+                    <input class='form-check-input' type="radio" id="sim" name="em_grupo" value=1>
+                    <label class='form-check-label' for="sim">Sim</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class='form-check-input' type="radio" id="nao" name="em_grupo" value=0>
+                    <label class='form-check-label' for="nao">Não</label>
+                </div>
+                
 
                 <br></br>
 
                 <p>Materiais necessários:</p>
                 <?php
                     while($row = $materiais->fetch_assoc()){
+                        echo "<div class='form-check form-check-inline'>";
                         echo "<input class='form-check-input' type='checkbox' id=m_".$row['id_material']." name='material[]' value=".$row['id_material'].">";
                         echo "<label class='form-check-label' for=m_".$row['id_material'].">".$row['descricao']."</label>";
+                        echo "</div>";
                     }
                 ?>
                 
@@ -115,8 +124,10 @@ $artefatos = $db->query($sql);
                 <p>Artefatos previstos:</p>
                 <?php
                     while($row = $artefatos->fetch_assoc()){
+                        echo "<div class='form-check form-check-inline'>";
                         echo "<input class='form-check-input' type='checkbox' id=a_".$row['id_artefato']." name='artefato[]' value=".$row['id_artefato'].">";
-                        echo "<label class='form-check-label' for=a_".$row['id_artefato'].">".$row['descricao']."</label>";
+                        echo "<label class='form-check-label' for=a_".$row['id_artefato'].">".$row['descricao']."&nbsp;</label>";
+                        echo "</div>";
                     }
                 ?>
 
@@ -136,8 +147,13 @@ $artefatos = $db->query($sql);
                     <textarea class='form-control' placeholder="Digite as refêrencias utilizadas aqui..." name="referencias" id="referencias" cols="50" rows="9"></textarea>
 
                 <br>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary btn-lg" name="botao" id="submit" value="publicar">Publicar ideia</button>
+                <div class="row">
+                    <div class="col-2 d-grid gap-2">
+                        <a href="index.html" class="btn btn-outline-secondary btn-lg">Voltar</a>
+                    </div>
+                    <div class="col d-grid gap-2">
+                        <button class="btn btn-primary btn-lg" name="botao" id="submit" value="publicar">Publicar ideia</button>
+                    </div>
                 </div>
             </form>
             <br>

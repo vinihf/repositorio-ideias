@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/10/2024 às 15:29
+-- Tempo de geração: 08/11/2024 às 12:58
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `repositorio_ideias`
 --
-CREATE DATABASE IF NOT EXISTS `repositorio_ideias` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `repositorio_ideias`;
 
 -- --------------------------------------------------------
 
@@ -42,7 +40,9 @@ INSERT INTO `artefatos` (`id_artefato`, `descricao`) VALUES
 (1, 'Software funcional'),
 (2, 'Revisão sistemática'),
 (3, 'Artigo científico'),
-(4, 'Prótotipo');
+(4, 'Prótotipo'),
+(5, 'Resumo'),
+(6, 'Apresentação');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,9 @@ INSERT INTO `disciplinas` (`id_disciplina`, `descricao`) VALUES
 (1, 'Programação'),
 (2, 'Fundamentos da computação'),
 (3, 'Banco de dados'),
-(4, 'Redes de computadores');
+(4, 'Redes de computadores'),
+(5, 'Práticas de hardware e software'),
+(6, 'Informática instrumental');
 
 -- --------------------------------------------------------
 
@@ -253,13 +255,13 @@ ALTER TABLE `temas`
 -- AUTO_INCREMENT de tabela `artefatos`
 --
 ALTER TABLE `artefatos`
-  MODIFY `id_artefato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_artefato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `disciplinas`
 --
 ALTER TABLE `disciplinas`
-  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_disciplina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `materiais`
@@ -271,7 +273,7 @@ ALTER TABLE `materiais`
 -- AUTO_INCREMENT de tabela `projetos`
 --
 ALTER TABLE `projetos`
-  MODIFY `id_projeto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_projeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas

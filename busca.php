@@ -42,22 +42,29 @@
 
         <?php if (isset($_GET['resultado'])): ?>
         
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6 d-flex justify-content-right"> 
+                <h2 class="text-primary">Resultados da busca:</h2>
+            </div>
+            <br></br>
+            <div class="col"></div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-6 d-flex justify-content-right"> 
-                    <h2 class="text-primary">Resultados da busca:</h2>
+                <div class="col-6 d-flex justify-content-center">
+                    <?php echo $_GET['resultado']; ?>
                 </div>
-                <br></br>
                 <div class="col"></div>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-6 d-flex justify-content-center">
-                        <?php echo $_GET['resultado']; ?>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            <?php endif; ?>
             </div>
+        <?php endif; ?>
+        </div>
+        <div class="fixed-bottom">
+            <div class="row">
+                <div class="col-2 d-grid gap-2">
+                    <a href="index.html" class="btn btn-outline-secondary btn-lg">Voltar</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
