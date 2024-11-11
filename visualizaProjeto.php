@@ -85,7 +85,7 @@ if (isset($_GET['id'])){
             <div class="container">
                 <br></br>
                 <div class="row">
-                    <div class="col d-flex justify-content-center"><?php echo $titulo ?></div><!--col-titulo--> 
+                    <div class="col d-flex text-center"><?php echo $titulo ?></div><!--col-titulo--> 
                 </div><!--row-titulo-->
                 <div class="row justify-content-center">
                     <div class="col-4 d-flex justify-content-right"></div>
@@ -93,33 +93,44 @@ if (isset($_GET['id'])){
                 </div>
                 <br></br>
                 <div class="row">
-                    <div class="col-3"></div>
+                    <div class="col-1"></div>
                     <div class="col"><?php echo $questao_motriz ?></div>
-                    <div class="col"><?php echo $ancora ?></div>
                     <div class="col-2"></div>
-                </div>   
+                </div>
+                <br>
+                <div class="row justify-text-center">
+                    <div class="col-1"></div>
+                    <div class="col"><?php echo $ancora ?></div>
+                </div>
                 <br>
                 <div class="row">
-                    <div class="col-3"></div>
+                    <div class="col-1"></div>
                     <div class="col"><?php echo $disciplinas ?></div>
                     <div class="col"><?php echo $temas ?></div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col justify-content-center"><?php echo $metodologia ?></div>
-                    <div class="col justify-content-center"><?php echo $avaliacao ?></div>
+                    <div class="col-1"></div>
+                    <div class="col justify-text-center"><?php echo $metodologia ?></div>
+                    <div class="col justify-text-center"><?php echo $avaliacao ?></div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-3"></div>
+                    <div class="col-1"></div>
                     <div class="col justify-content-center"><?php echo $materiais ?></div>
                     <div class="col justify-content-center"><?php echo $artefatos ?></div>
                 </div>
-                <div class="row">
-                    <div class="col-5"></div>
+                <br>
+                <div class="row justify-text-center">
+                    <div class="col-1"></div>
                     <div class="col"><?php echo $referencias ?></div>
-                    <div class="col-5"></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-2 d-grid gap-2">
+                    <a href="busca.php" class="btn btn-outline-secondary btn-lg">Voltar</a>
                 </div>
             </div>
 

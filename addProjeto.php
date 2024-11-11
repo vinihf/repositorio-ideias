@@ -4,17 +4,17 @@
 
     if(isset($_POST['botao'])){
 
-        $titulo = $_POST['titulo'];
-        $q_motriz = $_POST['q_motriz'];
+        $titulo = htmlspecialchars($_POST['titulo']);
+        $q_motriz = htmlspecialchars($_POST['q_motriz']);
         $disciplina = $_POST['disciplina'];
         $tema = $_POST['tema'];
-        $ancora = $_POST['ancora'];
-        $em_grupo = $_POST['em_grupo'];
+        $ancora = htmlspecialchars($_POST['ancora']);
+        $em_grupo = htmlspecialchars($_POST['em_grupo']);
         $material = $_POST['material'];
         $artefato = $_POST['artefato'];
-        $metodologia = $_POST['metodologia'];
-        $avaliacao = $_POST['avaliacao'];
-        $referencias = $_POST['referencias'];
+        $metodologia = htmlspecialchars($_POST['metodologia']);
+        $avaliacao = htmlspecialchars($_POST['avaliacao']);
+        $referencias = htmlspecialchars($_POST['referencias']);
 
 
         $sql = mysqli_query($db, "INSERT INTO projetos (id_projeto, titulo, ancora, questao_motriz, organizacao, metodologia, avaliacao, referencias)
